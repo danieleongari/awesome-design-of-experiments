@@ -50,11 +50,33 @@ Analysis of the design:
 ## diversipy - [GitHub](https://github.com/DavidWalz/diversipy), [Docs](https://diversipy.readthedocs.io/en/latest/index.html) 
 
 - `cube` - Uniform sampling from the unit hypercube
+  - `cube.stratify_conventional`: stratification of the unit hypercube
+  - `stratify_generalized`: generalized stratification of the unit hypercube
+  - `cube.latin_design`: generate a random latin hypercube design matrix
+  - `cube.improved_latin_design`: generate an ‘improved’ latin hypercube design matrix
+  - `cube.rank1_design`: design matrix for a rank-1 lattice
+  - `cube.sample_halton`: generate a Halton point set
+  - `cube.sample_maximin`: maximize the minimal distance in the unit hypercube with extensions
+  - `cube.sample_k_means`: in its default setup, this algorithm converges to a centroidal Voronoi tesselation of the unit hypercube
+  - `cube.grid`: create conventional grid in the unit hypercube
 - `simplex` - Uniform sampling on the unit simplex
 - `polytope` - Uniform sampling from convex polytopes
 - `subset` - Select diverse subsets
-- `indicator` - Useful diversity indicators
-- `distance` - Some distance functions
+  - `subset.psa_partition`: partition the data set into the given number of clusters with the part-and-select algorithm
+  - `subset.psa_select`: select representatives points with the part-and-select algorithm
+  - `subset.select_greedy_maximin`: greedily select a subset according to maximin criterion
+  - `subset.select_greedy_maxisum`: greedily select a subset according to maxisum criterion.
+
+Analysis of the design:
+
+- `indicator.solow_polasky_diversity`: Solow-Polasky diversity
+- `indicator.weitzman_diversity`: Weitzman diversity
+- `indicator.sum_of_dists`: square root of the sum of all pairwise distances
+- `indicator.average_inverse_dist`: average inverse distance
+- `indicator.separation_dist`: minimal pairwise distance
+- `indicator.wmh_index`: quality index of Wahl, Mercadier, and Helbert
+- `indicator.sum_of_nn_dists`: sum of nearest-neighbor distances
+- `indicator.unanchored_L2_discrepancy`: unanchored L2 discrepancy
 
 ## Definitive Screening Design - [GitHub](https://github.com/danieleongari/definitive_screening_design)
 - `dsd.generate(n_num, n_cat, factors_dict=None, method='dsd', min_13=True, n_fake_factors=0)`
