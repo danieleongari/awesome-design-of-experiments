@@ -23,9 +23,10 @@ Fork called `pyDOE2`, which is just adding the GSD method (i.e., a 3+levels frac
 * Plackett-Burman: `build.plackett_burman()`
 * Sukharev grid: `build.sukharev()`
 * Box-Behnken: ``build.box_behnken()``
-* Box-Wilson (Central-composite) with center-faced option: ``build.central_composite()`` with ``face='ccf'`` option
-* Box-Wilson (Central-composite) with center-inscribed option: ``build.central_composite()`` with ``face='cci'`` option
-* Box-Wilson (Central-composite) with center-circumscribed option: ``build.central_composite()`` with ``face='ccc'`` option
+* Box-Wilson (Central-composite) 
+  * with center-faced option: ``build.central_composite()`` with ``face='ccf'`` option
+  * with center-inscribed option: ``build.central_composite()`` with ``face='cci'`` option
+  * with center-circumscribed option: ``build.central_composite()`` with ``face='ccc'`` option
 * Latin hypercube (simple): ``build.lhs()``
 * Latin hypercube (space-filling): ``build.space_filling_lhs()``
 * Random k-means cluster: ``build.random_k_means()``
@@ -56,8 +57,14 @@ Analysis of the design:
 - `distance` - Some distance functions
 
 ## Definitive Screening Design - [GitHub](https://github.com/danieleongari/definitive_screening_design)
-
-- `dsd.generate(n_num, n_cat, factors_dict=None, method='dsd', min_13=True, n_fake_factors=0, verbose=True)`
+- `dsd.generate(n_num, n_cat, factors_dict=None, method='dsd', min_13=True, n_fake_factors=0)`
 
 Analysis of the design:
 - `dsd.analysis.get_map_of_correlations(X, effects)`
+
+## pyLHD - [GitHub](https://github.com/toledo60/pyLHD), [Docs](https://toledo60.github.io/pyLHD/), [WebApp](https://share.streamlit.io/toledo60/pylhd-streamlit/main/pyLHD_streamlit.py)
+Generate several variants of the Latin Hypercube design.
+
+Analysis of the design:
+Average Absolute Correlation, Maximum Absolute Correlation, Maximum Projection Criterion ([Joseph 2015](https://academic.oup.com/biomet/article-abstract/102/2/371/246859?redirectedFrom=fulltext)), Coverage measure, Inter-site Distance, Discrepancy, MaxiMin, Mesh Ratio, Phi_p Criterion. 
+
