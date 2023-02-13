@@ -42,7 +42,7 @@ Fork called `pyDOE2`, which is just adding the GSD method (i.e., a 3+levels frac
 - Mixture Simplex Centroid: `build_simplex_centroid(factor_count)`
 - Optimal Designs: `build_optimal(factor_count, **kwargs)`
 
-Design Evaluation:
+Analysis of the design:
 - Statistical Power: `f_power(model, design, effect_size, alpha)`
 - Alias list: `alias_list(model, design)`
 
@@ -58,3 +58,6 @@ Design Evaluation:
 ## Definitive Screening Design - [GitHub](https://github.com/danieleongari/definitive_screening_design)
 
 - `dsd.generate(n_num, n_cat, factors_dict=None, method='dsd', min_13=True, n_fake_factors=0, verbose=True)`
+
+Analysis of the design:
+- `dsd.analysis.get_map_of_correlations(X, effects)`
