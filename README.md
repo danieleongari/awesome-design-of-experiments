@@ -88,5 +88,15 @@ Analysis of the design:
 Generate several variants of the Latin Hypercube design.
 
 Analysis of the design:
+
 Average Absolute Correlation, Maximum Absolute Correlation, Maximum Projection Criterion ([Joseph 2015](https://academic.oup.com/biomet/article-abstract/102/2/371/246859?redirectedFrom=fulltext)), Coverage measure, Inter-site Distance, Discrepancy, MaxiMin, Mesh Ratio, Phi_p Criterion. 
+
+## BoFire - [GitHub](https://github.com/experimental-design/bofire), [Docs](https://experimental-design.github.io/bofire/)
+- D-, A-, G-, E-, K- optimality in a constrained design space
+- Space filling in a constrained design space
+
+Analysis of the design:
+
+- `bofire.utils.doe.get_confounding_matrix()`
+
 
