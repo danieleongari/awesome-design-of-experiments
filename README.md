@@ -1,5 +1,17 @@
 # Awesome Design of Experiments (DOE) [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
 
+The *Design of Experiments* is the theory of conceiving the optimal set of trials for model-testing experimentation.
+DOE packages may have 4 different capabilities:
+
+1. **Generation of the design**, e.g., generating factorial designs, latin hypercube, etc., upon the user request 
+2. **Analysis of the design**, e.g., the ability of comparing the optimality of different design, evaluating the aliasing of factors, etc.
+3. **Analysis of the response**, e.g., the ability of testing the model and fitting the coefficients. Most of open-source DOE packages lack this ability, relying on well-established statistic packages such as [statsmodels](https://www.statsmodels.org/stable/index.html) and [scikit-learn](https://scikit-learn.org/stable/).
+4. **Design augmentation**, which is the typical pipeline of Active Learning (or Bayesian Optimization), using the response of the early trials to suggest a new set of trials that are a promising compromise between exploitation and exploration toward an optimum goal.
+
+In the following we list a number of open-source packages, that focus on the generation and the analisys of designs.
+
+> Don't hesitate to open an issue to report any package (with a reasonable users base) that is missing from this list
+
 ## pyDOE - [GitHub](https://github.com/clicumu/pyDOE2), [Docs](https://pythonhosted.org/pyDOE/)
 
 A collection of "classical" design of experiments.
@@ -50,6 +62,7 @@ Yet another collection of "classical" design of experiments.
 - Optimal Designs: `build_optimal(factor_count, **kwargs)`
 
 Analysis of the design:
+
 - Statistical Power: `f_power(model, design, effect_size, alpha)`
 - Alias list: `alias_list(model, design)`
 
@@ -93,6 +106,7 @@ Implementation of the DSD in python: a small design aimed to screen all factors 
 - `dsd.generate(n_num, n_cat, factors_dict=None, method='dsd', min_13=True, n_fake_factors=0)`
 
 Analysis of the design:
+
 - `dsd.analysis.get_map_of_correlations(X, effects)`
 
 ## pyLHD - [GitHub](https://github.com/toledo60/pyLHD), [Docs](https://toledo60.github.io/pyLHD/), [WebApp](https://share.streamlit.io/toledo60/pylhd-streamlit/main/pyLHD_streamlit.py)
