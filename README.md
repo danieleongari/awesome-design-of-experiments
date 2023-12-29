@@ -2,7 +2,9 @@
 
 ## pyDOE - [GitHub](https://github.com/clicumu/pyDOE2), [Docs](https://pythonhosted.org/pyDOE/)
 
-Fork called `pyDOE2`, which is just adding the GSD method (i.e., a 3+levels fractional factorial) to `pyDOE`.
+A collection of "classical" design of experiments.
+
+We refer to a fork called `pyDOE2`, which is just adding the GSD method (i.e., a 3+levels fractional factorial) to `pyDOE`.
 
 - Factorial Designs
     - General Full-Factorial (``fullfact``)
@@ -17,6 +19,8 @@ Fork called `pyDOE2`, which is just adding the GSD method (i.e., a 3+levels frac
     - Latin-Hypercube (``lhs``)
 
 ## DOEPY - [GitHub](https://github.com/tirthajyoti/doepy), [Docs](https://doepy.readthedocs.io/en/latest/)
+
+Another collection of "classical" design of experiments.
 
 * Full factorial: `build.full_fact()`
 * 2-level fractional factorial: `build.frac_fact_res()`
@@ -36,6 +40,8 @@ Fork called `pyDOE2`, which is just adding the GSD method (i.e., a 3+levels frac
 
 ## dexpy - [GitHub](https://github.com/statease/dexpy), [Docs](https://statease.github.io/dexpy/)
 
+Yet another collection of "classical" design of experiments.
+
 - Fractional Factorial: `build_factorial(factor_count, run_count)`
 - Full Factorial: `build_full_factorial(factor_count)`
 - Central Composite: `build_ccd(factor_count, alpha='rotatable', center_points=1)`
@@ -49,6 +55,8 @@ Analysis of the design:
 
 ## diversipy - [GitHub](https://github.com/DavidWalz/diversipy), [Docs](https://diversipy.readthedocs.io/en/latest/index.html) 
 
+Collection of algorithms for uniform sampling, and related topics.
+ 
 - `cube` - Uniform sampling from the unit hypercube
   - `cube.stratify_conventional`: stratification of the unit hypercube
   - `stratify_generalized`: generalized stratification of the unit hypercube
@@ -79,24 +87,45 @@ Analysis of the design:
 - `indicator.unanchored_L2_discrepancy`: unanchored L2 discrepancy
 
 ## Definitive Screening Design - [GitHub](https://github.com/danieleongari/definitive_screening_design)
+
+Implementation of the DSD in python: a small design aimed to screen all factors for second order models.
+
 - `dsd.generate(n_num, n_cat, factors_dict=None, method='dsd', min_13=True, n_fake_factors=0)`
 
 Analysis of the design:
 - `dsd.analysis.get_map_of_correlations(X, effects)`
 
 ## pyLHD - [GitHub](https://github.com/toledo60/pyLHD), [Docs](https://toledo60.github.io/pyLHD/), [WebApp](https://share.streamlit.io/toledo60/pylhd-streamlit/main/pyLHD_streamlit.py)
-Generate several variants of the Latin Hypercube design.
+
+Package focused on the Latin Hypercube Design (LHD), to generate and analyze several variants of this design.
+
+- Classical latin hypercube: `pyLHD.LatinHypercube(size, seed, scramble)`
 
 Analysis of the design:
 
 Average Absolute Correlation, Maximum Absolute Correlation, Maximum Projection Criterion ([Joseph 2015](https://academic.oup.com/biomet/article-abstract/102/2/371/246859?redirectedFrom=fulltext)), Coverage measure, Inter-site Distance, Discrepancy, MaxiMin, Mesh Ratio, Phi_p Criterion. 
 
 ## BoFire - [GitHub](https://github.com/experimental-design/bofire), [Docs](https://experimental-design.github.io/bofire/)
-- D-, A-, G-, E-, K- optimality in a constrained design space
+
+BoFire is a Bayesian Optimization Framework Intended for Real Experiments. It contains nice features to generate a DoE when starting from scratch.
+
+- D-, A-, G-, E-, K- optimization in a constrained design space
 - Space filling in a constrained design space
 
 Analysis of the design:
 
 - `bofire.utils.doe.get_confounding_matrix()`
+
+## OApackage - [GitHub](https://github.com/eendebakpt/oapackage), [Docs](https://oapackage.readthedocs.io/en/latest/index.html)
+
+The Orthogonal Array package contains functionality to generate and analyse orthogonal arrays, optimal designs and conference designs.
+
+- Generate (`oapackage.arraydata_t()`) and extend (`oapackage.extend_array()`) orthogonal arrays
+- Conference designs (`oapackage.conference_t()`)
+- D-Efficient optimized design (`oapackage.Doptimize()`)
+
+Analysis of the design:
+
+- D-, Ds-, A-, E- efficiency of the design (`.Defficiency()`, `.DsEfficiency()`, `.Aefficiency()`, `.Eefficiency()`)
 
 
