@@ -1,7 +1,7 @@
 # Awesome Design of Experiments (DOE) [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
 
 ![image](./image.png)
-Adapted from (Navarro-Brul et al., React. Chem. Eng., 2022)[https://pubs.rsc.org/en/content/articlelanding/2022/re/d1re00541c]
+*Adapted from [Navarro-Brul et al., React. Chem. Eng., 2022](https://pubs.rsc.org/en/content/articlelanding/2022/re/d1re00541c)*
 
 The *Design of Experiments* is the theory of conceiving the optimal set of trials for model-testing experimentation.
 DOE packages may have 4 different capabilities:
