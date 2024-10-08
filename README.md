@@ -1,10 +1,13 @@
 # Awesome Design of Experiments (DOE) [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
 
+![image](./image.png)
+Adapted from (Navarro-Brul et al., React. Chem. Eng., 2022)[https://pubs.rsc.org/en/content/articlelanding/2022/re/d1re00541c]
+
 The *Design of Experiments* is the theory of conceiving the optimal set of trials for model-testing experimentation.
 DOE packages may have 4 different capabilities:
 
 1. **Generation of the design**, e.g., generating factorial designs, latin hypercube, etc., upon the user request 
-2. **Analysis of the design**, e.g., the ability of comparing the optimality of different design, evaluating the aliasing of factors, etc.
+2. **Analysis of the design**, e.g., the ability of comparing the sampling optimality of different designs for the model hypothesis, evaluating the aliasing of factors, etc.
 3. **Analysis of the response**, e.g., the ability of testing the model and fitting the coefficients. Most of open-source DOE packages lack this ability, relying on well-established statistic packages such as [statsmodels](https://www.statsmodels.org/stable/index.html) and [scikit-learn](https://scikit-learn.org/stable/).
 4. **Design augmentation**, which is the typical pipeline of Active Learning (or Bayesian Optimization), using the response of the early trials to suggest a new set of trials that are a promising compromise between exploitation and exploration toward an optimum goal.
 
