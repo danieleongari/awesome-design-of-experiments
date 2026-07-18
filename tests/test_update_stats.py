@@ -13,9 +13,10 @@ from scripts.update_stats import (
     PackageStats,
     discover_packages,
     fetch_github_stats,
+    paginated_total,
+    render_contributor_count,
     render_stats,
     replace_stats_block,
-    total_commits,
     update_readme,
 )
 
@@ -47,12 +48,35 @@ class FakeClient(GitHubClient):
 
     def get(self, path, query=None):
         if path.endswith("/commits"):
+            if query and query.get("page") == "42":
+                return (
+                    [
+                        {
+                            "commit": {
+                                "author": {
+                                    "date": "2019-01-02T08:00:00Z"
+                                }
+                            }
+                        }
+                    ],
+                    {},
+                )
             return (
                 [{"commit": {"committer": {"date": "2026-07-17T12:00:00Z"}}}],
                 {
                     "link": (
                         '<https://api.github.com/repositories/1/commits?'
                         'sha=main&per_page=1&page=42>; rel="last"'
+                    )
+                },
+            )
+        if path.endswith("/contributors"):
+            return (
+                [{"login": "example"}],
+                {
+                    "link": (
+                        '<https://api.github.com/repositories/1/contributors?'
+                        'anon=1&per_page=1&page=7>; rel="last"'
                     )
                 },
             )
@@ -76,13 +100,18 @@ class UpdateStatsTests(unittest.TestCase):
     def test_parses_github_response_and_last_page(self):
         stats = fetch_github_stats(Package("Alpha", "example/alpha"), FakeClient())
         self.assertEqual(stats.stars, 123)
+        self.assertEqual(stats.first_commit, "2019-01-02")
         self.assertEqual(stats.last_commit, "2026-07-17")
         self.assertEqual(stats.commits, 42)
+        self.assertEqual(stats.contributors, 7)
         self.assertEqual(stats.default_branch, "main")
 
-    def test_commit_count_handles_unpaginated_and_empty_repositories(self):
-        self.assertEqual(total_commits([{}], None), 1)
-        self.assertEqual(total_commits([], None), 0)
+    def test_pagination_count_handles_unpaginated_and_empty_responses(self):
+        self.assertEqual(paginated_total([{}], None), 1)
+        self.assertEqual(paginated_total([], None), 0)
+
+    def test_contributor_count_uses_thousands_separator(self):
+        self.assertEqual(render_contributor_count(1939), "1,939")
 
     def test_renders_stable_markdown(self):
         rendered = render_stats(
@@ -90,9 +119,11 @@ class UpdateStatsTests(unittest.TestCase):
                 PackageStats(
                     package=Package("Alpha", "example/alpha"),
                     stars=1234,
+                    first_commit="2019-01-02",
                     last_commit="2026-07-17",
                     commits=42,
                     lines_of_code=9876,
+                    contributors=7,
                 )
             ],
             date(2026, 7, 18),
@@ -100,7 +131,7 @@ class UpdateStatsTests(unittest.TestCase):
         self.assertIn("_Last refreshed: **2026-07-18**_", rendered)
         self.assertIn(
             "| [Alpha](https://github.com/example/alpha) "
-            "| 1,234 | 2026-07-17 | 42 | 9,876 |",
+            "| 1,234 | 2019-01-02 | 2026-07-17 | 42 | 9,876 | 7 |",
             rendered,
         )
 
