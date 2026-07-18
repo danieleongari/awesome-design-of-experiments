@@ -37,8 +37,10 @@ class Package:
 @dataclass(frozen=True)
 class GitHubStats:
     stars: int
+    first_commit: str
     last_commit: str
     commits: int
+    contributors: int
     default_branch: str
 
 
@@ -46,9 +48,11 @@ class GitHubStats:
 class PackageStats:
     package: Package
     stars: int
+    first_commit: str
     last_commit: str
     commits: int
     lines_of_code: int
+    contributors: int
 
 
 class GitHubClient:
@@ -98,12 +102,12 @@ def discover_packages(readme: str) -> list[Package]:
     return packages
 
 
-def total_commits(commits: Sequence[object], link_header: str | None) -> int:
+def paginated_total(items: Sequence[object], link_header: str | None) -> int:
     """Read a total count from GitHub's pagination Link header."""
-    if not commits:
+    if not items:
         return 0
     if not link_header:
-        return len(commits)
+        return len(items)
 
     for link in link_header.split(","):
         if 'rel="last"' not in link:
@@ -111,11 +115,24 @@ def total_commits(commits: Sequence[object], link_header: str | None) -> int:
         match = re.search(r"[?&]page=(\d+)", link)
         if match:
             return int(match.group(1))
-    return len(commits)
+    return len(items)
+
+
+def commit_date(commit: object, package: Package) -> str:
+    """Extract a YYYY-MM-DD commit date from a GitHub commit response."""
+    if not isinstance(commit, dict):
+        raise RuntimeError(f"Unexpected commit response for {package.slug}")
+    commit_details = commit.get("commit")
+    if not isinstance(commit_details, dict):
+        raise RuntimeError(f"Missing commit details for {package.slug}")
+    identity = commit_details.get("committer") or commit_details.get("author")
+    if not isinstance(identity, dict) or not identity.get("date"):
+        raise RuntimeError(f"Missing commit date for {package.slug}")
+    return str(identity["date"])[:10]
 
 
 def fetch_github_stats(package: Package, client: GitHubClient) -> GitHubStats:
-    """Fetch repository metadata and latest default-branch commit information."""
+    """Fetch repository, default-branch commit, and contributor information."""
     encoded_slug = "/".join(
         urllib.parse.quote(part, safe="") for part in package.slug.split("/")
     )
@@ -131,20 +148,39 @@ def fetch_github_stats(package: Package, client: GitHubClient) -> GitHubStats:
     if not isinstance(commits, list) or not commits:
         raise RuntimeError(f"No commits found for {package.slug}")
 
-    commit = commits[0]
-    if not isinstance(commit, dict):
-        raise RuntimeError(f"Unexpected commit response for {package.slug}")
-    commit_details = commit.get("commit")
-    if not isinstance(commit_details, dict):
-        raise RuntimeError(f"Missing commit details for {package.slug}")
-    identity = commit_details.get("committer") or commit_details.get("author")
-    if not isinstance(identity, dict) or not identity.get("date"):
-        raise RuntimeError(f"Missing latest commit date for {package.slug}")
+    commit_count = paginated_total(commits, headers.get("link"))
+    if commit_count == 1:
+        oldest_commit = commits[0]
+    else:
+        oldest_commits, _ = client.get(
+            f"/repos/{encoded_slug}/commits",
+            {
+                "sha": default_branch,
+                "per_page": "1",
+                "page": str(commit_count),
+            },
+        )
+        if not isinstance(oldest_commits, list) or not oldest_commits:
+            raise RuntimeError(f"No oldest commit found for {package.slug}")
+        oldest_commit = oldest_commits[0]
+
+    contributors, contributor_headers = client.get(
+        f"/repos/{encoded_slug}/contributors",
+        {"anon": "1", "per_page": "1"},
+    )
+    if not isinstance(contributors, list):
+        raise RuntimeError(
+            f"Unexpected contributors response for {package.slug}"
+        )
 
     return GitHubStats(
         stars=int(repository["stargazers_count"]),
-        last_commit=str(identity["date"])[:10],
-        commits=total_commits(commits, headers.get("link")),
+        first_commit=commit_date(oldest_commit, package),
+        last_commit=commit_date(commits[0], package),
+        commits=commit_count,
+        contributors=paginated_total(
+            contributors, contributor_headers.get("link")
+        ),
         default_branch=default_branch,
     )
 
@@ -194,12 +230,19 @@ def collect_stats(
             PackageStats(
                 package=package,
                 stars=github.stars,
+                first_commit=github.first_commit,
                 last_commit=github.last_commit,
                 commits=github.commits,
                 lines_of_code=line_counter(package, github.default_branch),
+                contributors=github.contributors,
             )
         )
     return rows
+
+
+def render_contributor_count(contributors: int) -> str:
+    """Render a GitHub contributor count."""
+    return f"{contributors:,}"
 
 
 def render_stats(rows: Sequence[PackageStats], refreshed_on: date) -> str:
@@ -208,15 +251,19 @@ def render_stats(rows: Sequence[PackageStats], refreshed_on: date) -> str:
         START_MARKER,
         f"_Last refreshed: **{refreshed_on.isoformat()}**_",
         "",
-        "| Package | Stars | Last commit | Commits | Lines of code |",
-        "| --- | ---: | --- | ---: | ---: |",
+        (
+            "| Package | Stars | First Commit | Last Commit | Commits "
+            "| Lines of code | Contributors |"
+        ),
+        "| --- | ---: | --- | --- | ---: | ---: | ---: |",
     ]
     for row in rows:
         repository_url = f"https://github.com/{row.package.slug}"
         lines.append(
             f"| [{row.package.name}]({repository_url}) "
-            f"| {row.stars:,} | {row.last_commit} | {row.commits:,} "
-            f"| {row.lines_of_code:,} |"
+            f"| {row.stars:,} | {row.first_commit} | {row.last_commit} "
+            f"| {row.commits:,} | {row.lines_of_code:,} "
+            f"| {render_contributor_count(row.contributors)} |"
         )
     lines.append(END_MARKER)
     return "\n".join(lines)
