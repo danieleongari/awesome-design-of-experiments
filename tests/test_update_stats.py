@@ -27,11 +27,15 @@ SAMPLE_README = f"""# Packages
 {START_MARKER}
 {END_MARKER}
 
-## Alpha - [GitHub](https://github.com/example/alpha), [Docs](https://example.com)
+## Core packages
+
+### Alpha - [GitHub](https://github.com/example/alpha), [Docs](https://example.com)
 
 Description.
 
-## Beta Tool - [GitHub](https://github.com/other/beta)
+## Specialist packages
+
+### Beta Tool - [GitHub](https://github.com/other/beta)
 
 Description.
 """
