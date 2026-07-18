@@ -21,7 +21,7 @@ from typing import Callable, Mapping, Sequence
 START_MARKER = "<!-- package-stats:start -->"
 END_MARKER = "<!-- package-stats:end -->"
 PACKAGE_HEADING = re.compile(
-    r"^##\s+(?P<name>.+?)\s+-\s+\[GitHub\]"
+    r"^#{2,3}\s+(?P<name>.+?)\s+-\s+\[GitHub\]"
     r"\(https://github\.com/(?P<slug>[^/\s)]+/[^/\s)#?,]+?)(?:\.git)?\)"
     r"(?:,|$)",
     re.MULTILINE,
