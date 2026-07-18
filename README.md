@@ -15,6 +15,26 @@ In the following we list a number of open-source packages, that focus on the gen
 
 > Don't hesitate to open an issue to report any package (with a reasonable users base) that is missing from this list
 
+## Package statistics
+
+These statistics are refreshed automatically on the first day of every month.
+Commit metrics use each repository's default branch; lines of code exclude blanks and comments.
+
+<!-- package-stats:start -->
+_Last refreshed: **2026-07-18**_
+
+| Package | Stars | Last commit | Commits | Lines of code |
+| --- | ---: | --- | ---: | ---: |
+| [pyDOE](https://github.com/clicumu/pyDOE2) | 166 | 2021-03-03 | 127 | 14,626 |
+| [DOEPY](https://github.com/tirthajyoti/doepy) | 166 | 2020-09-25 | 56 | 7,943 |
+| [dexpy](https://github.com/statease/dexpy) | 31 | 2018-06-17 | 247 | 6,549 |
+| [diversipy](https://github.com/DavidWalz/diversipy) | 9 | 2020-03-09 | 39 | 1,709 |
+| [Definitive Screening Design](https://github.com/danieleongari/definitive_screening_design) | 14 | 2024-05-28 | 48 | 895 |
+| [pyLHD](https://github.com/toledo60/pyLHD) | 1 | 2024-03-21 | 88 | 72,747 |
+| [BoFire](https://github.com/experimental-design/bofire) | 397 | 2026-07-16 | 687 | 64,231 |
+| [OApackage](https://github.com/eendebakpt/oapackage) | 38 | 2026-02-04 | 959 | 128,482 |
+<!-- package-stats:end -->
+
 ## pyDOE - [GitHub](https://github.com/clicumu/pyDOE2), [Docs](https://pythonhosted.org/pyDOE/)
 
 A collection of "classical" design of experiments.
@@ -144,5 +164,3 @@ The Orthogonal Array package contains functionality to generate and analyse orth
 Analysis of the design:
 
 - D-, Ds-, A-, E- efficiency of the design (`.Defficiency()`, `.DsEfficiency()`, `.Aefficiency()`, `.Eefficiency()`)
-
-
