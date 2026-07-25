@@ -1,0 +1,13 @@
+# Environment used to execute arboretti2022.ipynb (Python 3.12)
+
+pydoe @ git+https://github.com/danieleongari/pydoe.git@codex/generalize-definitive-screening-design
+numpy==2.5.1
+pandas==3.0.5
+scipy==1.18.0
+scikit-learn==1.9.0
+matplotlib==3.11.1
+
+# Clean-kernel notebook execution
+nbformat==5.10.4
+nbclient==0.11.0
+ipykernel==7.3.0
