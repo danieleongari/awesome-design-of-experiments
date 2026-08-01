@@ -23,28 +23,28 @@ branch. Contributor counts include anonymous contributors reported by GitHub.
 Lines of code exclude blanks and comments.
 
 <!-- package-stats:start -->
-_Last refreshed: **2026-07-18**_
+_Last refreshed: **2026-08-01**_
 
-| Package | Stars | First Commit | Last Commit | Commits | Lines of code | Contribs |
+| Package | Stars | First Commit | Last Commit | Commits | Lines of code | Contributors |
 | --- | ---: | --- | --- | ---: | ---: | ---: |
-| [PyDOE](https://github.com/pydoe/pydoe) | 326 | 2013-08-27 | 2026-07-17 | 181 | 13,733 | 11 |
+| [PyDOE](https://github.com/pydoe/pydoe) | 328 | 2013-08-27 | 2026-07-29 | 185 | 13,737 | 12 |
 | [DOEPY](https://github.com/tirthajyoti/doepy) | 166 | 2019-07-21 | 2020-09-25 | 56 | 7,943 | 2 |
 | [dexpy](https://github.com/statease/dexpy) | 31 | 2016-09-17 | 2018-06-17 | 247 | 6,549 | 2 |
 | [diversipy](https://github.com/DavidWalz/diversipy) | 9 | 2020-02-19 | 2020-03-09 | 39 | 1,709 | 1 |
-| [DSD](https://github.com/danieleongari/definitive_screening_design) | 14 | 2022-05-10 | 2024-05-28 | 48 | 895 | 3 |
+| [Definitive Screening Design](https://github.com/danieleongari/definitive_screening_design) | 14 | 2022-05-10 | 2026-07-25 | 53 | 1,871 | 3 |
 | [pyLHD](https://github.com/toledo60/pyLHD) | 1 | 2021-08-12 | 2024-03-21 | 88 | 72,747 | 1 |
-| [BoFire](https://github.com/experimental-design/bofire) | 397 | 2022-10-06 | 2026-07-16 | 687 | 64,231 | 40 |
-| [OApackage](https://github.com/eendebakpt/oapackage) | 38 | 2015-01-29 | 2026-02-04 | 959 | 128,482 | 7 |
+| [BoFire](https://github.com/experimental-design/bofire) | 399 | 2022-10-06 | 2026-07-31 | 689 | 64,330 | 41 |
+| [OApackage](https://github.com/eendebakpt/oapackage) | 39 | 2015-01-29 | 2026-02-04 | 959 | 128,482 | 7 |
 | [PyOptEx](https://github.com/mborn1/pyoptex) | 23 | 2023-11-09 | 2026-06-10 | 341 | 24,512 | 6 |
-| [Pyomo.DoE](https://github.com/Pyomo/pyomo) | 2,486 | 2014-10-09 | 2026-07-13 | 31,310 | 441,379 | 201 |
-| [OpenTURNS](https://github.com/openturns/openturns) | 340 | 2015-08-14 | 2026-07-16 | 7,757 | 563,774 | 49 |
-| [SciPy QMC](https://github.com/scipy/scipy) | 14,827 | 2001-02-01 | 2026-07-18 | 37,890 | 663,500 | 1,939 |
-| [Pyro OED](https://github.com/pyro-ppl/pyro) | 9,022 | 2017-06-16 | 2026-07-10 | 2,516 | 100,342 | 163 |
-| [OpenMDAO DOE](https://github.com/OpenMDAO/OpenMDAO) | 754 | 2016-09-20 | 2026-07-17 | 20,871 | 196,186 | 86 |
-| [IDAES PySMO](https://github.com/IDAES/idaes-pse) | 328 | 2018-12-11 | 2026-07-16 | 9,487 | 620,471 | 106 |
-| [SALib](https://github.com/SALib/SALib) | 995 | 2013-04-02 | 2026-07-17 | 2,074 | 65,885 | 58 |
-| [SMT](https://github.com/SMTorg/smt) | 897 | 2016-11-08 | 2026-06-22 | 1,665 | 136,013 | 43 |
-| [UQpy](https://github.com/SURGroup/UQpy) | 361 | 2017-12-01 | 2025-08-19 | 3,058 | 33,244 | 24 |
+| [Pyomo.DoE](https://github.com/Pyomo/pyomo) | 2,495 | 2014-10-09 | 2026-07-13 | 31,310 | 431,740 | 201 |
+| [OpenTURNS](https://github.com/openturns/openturns) | 340 | 2015-08-14 | 2026-07-30 | 7,780 | 569,041 | 49 |
+| [SciPy QMC](https://github.com/scipy/scipy) | 14,872 | 2001-02-01 | 2026-07-31 | 37,989 | 664,676 | 1,953 |
+| [Pyro OED](https://github.com/pyro-ppl/pyro) | 9,032 | 2017-06-16 | 2026-07-10 | 2,516 | 100,342 | 163 |
+| [OpenMDAO DOE Driver](https://github.com/OpenMDAO/OpenMDAO) | 761 | 2016-09-20 | 2026-07-17 | 20,871 | 196,186 | 86 |
+| [IDAES PySMO Sampling](https://github.com/IDAES/idaes-pse) | 332 | 2018-12-11 | 2026-07-23 | 9,488 | 620,479 | 106 |
+| [SALib](https://github.com/SALib/SALib) | 997 | 2013-04-02 | 2026-07-17 | 2,074 | 65,885 | 58 |
+| [SMT](https://github.com/SMTorg/smt) | 903 | 2016-11-08 | 2026-06-22 | 1,665 | 136,013 | 43 |
+| [UQpy](https://github.com/SURGroup/UQpy) | 361 | 2017-12-01 | 2025-08-19 | 3,058 | 33,252 | 24 |
 | [DoEgen](https://github.com/sebhaan/DoEgen) | 102 | 2020-11-17 | 2025-04-24 | 80 | 4,386 | 4 |
 <!-- package-stats:end -->
 
