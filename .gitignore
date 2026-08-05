@@ -81,3 +81,6 @@ local.properties
 
 # Ignore dependency directories
 .vscode/
+
+# Ignore project steering files
+AGENTS.md

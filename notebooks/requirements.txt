@@ -1,0 +1,14 @@
+# Shared environment for all practitioner notebooks (Python 3.13)
+# Each notebook's Section 9 records the exact versions used for its saved outputs.
+pydoe @ git+https://github.com/pydoe/pydoe.git@67873eed2e5bcb8e650dc75495ce19a970f7584d
+numpy==2.3.4
+pandas==3.0.0
+scipy==1.16.2
+statsmodels==0.14.6
+scikit-learn==1.9.0
+matplotlib==3.11.1
+
+# Notebook execution
+nbformat==5.10.4
+nbclient==0.10.4
+ipykernel==7.0.1
